@@ -1,0 +1,12 @@
+{
+  "name": "hospitality-job-agent",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "search": "node --env-file-if-exists=.env search.mjs",
+    "gmail-draft": "node --env-file-if-exists=.env gmail-draft.mjs",
+    "test": "node --test"
+  }
+}

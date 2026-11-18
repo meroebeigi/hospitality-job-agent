@@ -1,0 +1,6 @@
+.env
+.env.*
+!.env.example
+output/
+private/
+node_modules/
