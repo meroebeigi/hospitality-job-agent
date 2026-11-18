@@ -3,4 +3,6 @@
 !.env.example
 output/
 private/
-node_modules/
+__pycache__/
+*.py[cod]
+.venv/

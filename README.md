@@ -4,10 +4,10 @@ Find restaurants, cafés, takeaway shops, food kiosks, bakeries, and delis near 
 
 ## Run a search
 
-Install Node.js 22 or newer. There are no npm dependencies. In the repository directory, copy `.env.example` to `.env` and set `GEOAPIFY_API_KEY` using a key from [Geoapify](https://myprojects.geoapify.com/). Create a `private/` directory for your CV.
+Install Python 3.10 or newer. The agent uses only Python’s standard library. In the repository directory, copy `.env.example` to `.env` and set `GEOAPIFY_API_KEY` using a key from [Geoapify](https://myprojects.geoapify.com/). Create a `private/` directory for your CV. On Windows, you can use `py` in place of `python` if the Python launcher is installed.
 
 ```powershell
-npm run search -- --address "Rådhuspladsen 1, 1550 Copenhagen, Denmark" --radius-km 10 --name "Your Name" --resume private/CV.pdf --resume-text private/CV.txt
+python agent.py search --address "Rådhuspladsen 1, 1550 Copenhagen, Denmark" --radius-km 10 --name "Your Name" --resume private/CV.pdf --resume-text private/CV.txt
 ```
 
 - **Distance.** `--radius-km 10` searches up to 10 km in a straight line from the center. For a circular area of 10 km², use `--area-km2 10` instead. The equivalent radius is about 1.78 km.
@@ -26,7 +26,7 @@ The agent prefers recruitment addresses, then general business inboxes. Review t
 For a Gmail mailbox draft, use a Gmail API OAuth access token with the `https://www.googleapis.com/auth/gmail.compose` scope. Set `GMAIL_ACCESS_TOKEN` in your local `.env` and upload one reviewed draft at a time.
 
 ```powershell
-npm run gmail-draft -- output/search-EXAMPLE/node-12345.eml
+python agent.py gmail-draft output/search-EXAMPLE/node-12345.eml
 ```
 
 The command only creates drafts. Each successful call creates a new Gmail draft. See [Gmail's draft API guide](https://developers.google.com/workspace/gmail/api/guides/drafts) for API details.
@@ -40,4 +40,4 @@ The command only creates drafts. Each successful call creates a new Gmail draft.
 
 Venue data © [OpenStreetMap contributors](https://www.openstreetmap.org/copyright) via [Overpass](https://wiki.openstreetmap.org/wiki/Overpass_API). Address geocoding by [Geoapify](https://apidocs.geoapify.com/docs/geocoding/forward-geocoding/).
 
-Run `npm test` to check discovery, contact prioritization, and draft generation with local fixtures.
+Run `python -m unittest -v` to check discovery, contact prioritization, and draft generation with local fixtures.
